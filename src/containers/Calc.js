@@ -2,19 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { calculate } from '../actions'
 
-const Calc = ({value, onCalculate}) => (
+const Calc = ({result, expression, onCalculate}) => (
   <div>
     <h1>Enter expression:</h1>
-    <input type='text' onChange={(e) => onCalculate(e.target.value) }/>
-    = {value}
+    <input type='text' value={expression} onChange={(e) => onCalculate(e.target.value) }/>
+    = {result}
   </div>
 );
 
 // React syntax fix :(
 
 const mapStateToProps = (state, ownProps) => ({
-  value: state,
-  defaultExpression: ownProps.defaultExpression
+  result: state.result,
+  expression: state.expression
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

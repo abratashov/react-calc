@@ -2,10 +2,20 @@ import {
   CALCULATE
 } from '../actions'
 
-export default (state = 0, action) => {
+const EXPRESSION = '1 + 2 + 3 + 4 + 5'
+
+const INIT_STATE = {
+  result: calculate(EXPRESSION),
+  expression: EXPRESSION
+}
+
+export default (state = INIT_STATE, action) => {
   switch (action.type) {
     case CALCULATE:
-      return calculate(action.expression)
+      return {
+        result: calculate(action.expression),
+        expression: action.expression
+      }
     default:
       return state
   }
